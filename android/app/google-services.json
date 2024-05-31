@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "272868394669",
+    "firebase_url": "https://assignment-3f65a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "assignment-3f65a",
+    "storage_bucket": "assignment-3f65a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272868394669:android:6bac63c294bf45eff4a824",
+        "android_client_info": {
+          "package_name": "com.sap.bits.assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMXXS4b9NPWyEdihR5YjjsxKHyJM4Z2Rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
