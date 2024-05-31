@@ -4,7 +4,7 @@ import 'package:assignment/view/add_subscription/add_subscription_view.dart';
 
 import '../../common/color_extension.dart';
 // import '../calender/calender_view.dart';
-import '../card/cards_view.dart';~
+import '../card/cards_view.dart';
 import '../home/home_view.dart';
 import '../spending_budgets/spending_budgets_view.dart';
 
