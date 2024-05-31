@@ -1,3 +1,6 @@
+import 'package:assignment/utils/global_data.dart';
+import 'package:assignment/view/main_tab/main_tab_view.dart';
+import 'package:assignment/view/onboarding/onboarding.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +11,6 @@ import 'package:assignment/view/login/sign_in_view.dart';
 import '../../common/color_extension.dart';
 import '../../common_widget/primary_button.dart';
 import '../../common_widget/round_textfield.dart';
-import '../../common_widget/alert_dialog.dart';
 import '../../common_widget/secondary_boutton.dart';
 
 class SignUpView extends StatefulWidget {
@@ -150,13 +152,16 @@ class _SignUpViewState extends State<SignUpView> {
                       .createUserWithEmailAndPassword(
                           email: txtEmail.text, password: txtPassword.text)
                       .then((value) {
+                    // Set global params
+                    GlobalData.email = txtEmail.text;
+                    GlobalData.userId = value.user?.uid;
                     const SnackBar(
                       content: Text("User signed up successfully"),
                     );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeView(),
+                        builder: (context) => const OnboardingView(),
                       ),
                     );
                   }).onError((error, stackTrace) {

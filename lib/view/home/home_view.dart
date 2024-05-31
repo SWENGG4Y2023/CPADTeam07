@@ -144,6 +144,7 @@ class _HomeViewState extends State<HomeView> {
                             color: TColor.gray60.withOpacity(0.3),
                             borderRadius: BorderRadius.circular(16),
                           ),
+                          // TODO
                           child: Text(
                             "See your budget",
                             style: TextStyle(
@@ -200,6 +201,14 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
+
+
+
+
+
+
+
+
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -233,6 +242,11 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
+
+
+
+
+            
             if (isSubscription)
               ListView.builder(
                   padding:

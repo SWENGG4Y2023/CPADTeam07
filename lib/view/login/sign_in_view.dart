@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:assignment/view/home/home_view.dart';
+import 'package:assignment/view/main_tab/main_tab_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/view/login/sign_up_view.dart';
@@ -103,7 +104,7 @@ class _SignInViewState extends State<SignInView> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeView(),
+                        builder: (context) => const MainTabView(),
                       ),
                     );
                   }).onError((error, stackTrace) {

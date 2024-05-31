@@ -37,11 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.32.0
   firebase_auth: ^4.20.0
+  cloud_firestore: ^4.17.5
   carousel_slider: ^4.2.1
   dotted_border: ^2.1.0
   intl: ^0.18.0
   card_swiper:
     path: dev_lib/card_swiper
+  calendar_agenda: 
+    path: dev_lib/calendar_agenda
 
 dev_dependencies:
   flutter_test:
