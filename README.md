@@ -90,8 +90,8 @@ flutter run
 ```
 
 ## Team Members
-- Prashita K
+- Prashita Khunteta
 - Keerthi G
 - Sebin Sunny
 - Srikesh Nair
-- Vatsla K
+- Vatsla Khurana
