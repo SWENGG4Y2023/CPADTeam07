@@ -17,4 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## About
 
-Moneye takes care of all your financial related needs.
+Moneye takes care of all your subscriptions.
