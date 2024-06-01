@@ -1,3 +1,4 @@
+import 'package:assignment/models/subscription_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserData {
@@ -7,6 +8,8 @@ class UserData {
   String phone;
   String bank;
   String accountNumber;
+  int accountBalance;
+  // final List<SubscriptionModel> subscriptionModel;
   // String createdAt;
   // String updatedAt;
   // String baseLocationName;
@@ -19,6 +22,8 @@ class UserData {
     required this.phone,
     required this.bank,
     required this.accountNumber,
+    required this.accountBalance,
+    // required this.subscriptionModel,
     // required this.status,
     // required this.role,
     // required this.createdAt,
@@ -27,16 +32,7 @@ class UserData {
     // required this.baseLocationCode,
   });
 
-//   static UserData fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc) {
-//     return UserData(userId: userId, fullName: fullName, emailId: emailId, phone: phone, bank: bank, accountNumber: accountNumber)
-//         userId = doc.userId,
-//         fullName = doc.fullName()!["fullName"],
-//         emailId = doc.emailId()!["emailId"],
-//         phone = doc.phone()!["phone"],
-//         bank = doc.bank()!["bank"]
-// }
-
-  UserData fromJson(json) {
+  static fromJson(json) {
     return UserData(
       userId: json["userId"],
       fullName: json["fullName"],
@@ -44,7 +40,9 @@ class UserData {
       phone: json["phone"],
       bank: json["bank"] ?? "",
       accountNumber: json["accountNumber"],
-      // status: json["status"],
+      accountBalance: json["accountBalance"],
+      // subscriptionModel:
+      //     SubscriptionModel.fromJSONList(json["subscriptionModel"]),
       // role: json["role"],
       // createdAt: json["createdAt"],
       // updatedAt: json["updatedAt"] ?? "",
@@ -60,6 +58,8 @@ class UserData {
         "phone": phone,
         "bank": bank,
         "accountNumber": accountNumber,
+        "accountBalance": accountBalance,
+        // "subscriptionModel": SubscriptionModel.toJsonList(subscriptionModel),
         // "status": status,
         // "role": role,
         // "createdAt": createdAt,
@@ -77,10 +77,14 @@ class UserData {
   // }
 
   UserData.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
-      : userId = doc.id,
+      : userId = doc.data()!["userId"],
         fullName = doc.data()!["fullName"],
         emailId = doc.data()!["emailId"],
         phone = doc.data()!["phone"],
-        bank = doc.data()?["bank"],
-        accountNumber = doc.data()?["accountNumber"];
+        bank = doc.data()!["bank"],
+        accountNumber = doc.data()!["accountNumber"],
+        accountBalance = doc.data()!["accountBalance"];
+        // subscriptionModel = doc.data()!["subscriptionModel"] == null
+        //     ? []
+        //     : doc.data()!["subscriptionModel"].cast<SubscriptionModel>();
 }

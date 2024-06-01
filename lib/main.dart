@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: false,
       ),
-      // home: const WelcomeView(),
-      home: const MainTabView()
+      home: const WelcomeView(),
+      // home: const MainTabView()
     );
   }
 }

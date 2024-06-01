@@ -206,7 +206,9 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child:
-                  PrimaryButton(title: "Add this platform", onPressed: () {}),
+                  PrimaryButton(title: "Add this platform", onPressed: () {
+                    // TODO - add subscription to a user here.
+                  }),
             ),
             const SizedBox(
               height: 20,

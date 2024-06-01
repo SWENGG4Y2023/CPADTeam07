@@ -1,3 +1,5 @@
+// import 'package:assignment/models/speakers_model.dart';
+
 // class EventData {
 //   final String eventId;
 //   final String eventTitle;

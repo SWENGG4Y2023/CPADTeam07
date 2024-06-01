@@ -1,3 +1,7 @@
+import 'dart:ffi';
+import 'dart:math';
+
+import 'package:assignment/models/subscription_model.dart';
 import 'package:assignment/models/user_data.dart';
 import 'package:assignment/service/database_service.dart';
 import 'package:assignment/utils/global_data.dart';
@@ -8,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/view/home/home_view.dart';
 import 'package:assignment/view/login/sign_in_view.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../common/color_extension.dart';
 import '../../common_widget/primary_button.dart';
@@ -145,21 +150,37 @@ class OnboardingViewState extends State<OnboardingView> {
                       // Setup global data
                       GlobalData.fullName = txtName.text;
 
-                      //for now please TODO
-                      GlobalData.email = "prashita@gmail.com";
-                      GlobalData.userId = "6ahxNtjikFQ8GTOowPaOBcPfRMk1";
+                      // //for now please TODO
+                      // GlobalData.email = "prashita@gmail.com";
+                      // GlobalData.userId = "6ahxNtjikFQ8GTOowPaOBcPfRMk1";
 
-                      // Setting user data payload
-                      Map<String, String> userData = {
-                        "userId": GlobalData.userId!,
-                        "emailId": GlobalData.email!,
-                        "fullName": txtName.text,
-                        "phone": txtPhoneNumber.text,
-                        "bank": txtBankName.text,
-                        "accountNumber": txtAccountNumber.text,
-                      };
+                      Random random = Random();
+                      int randomNumber = random.nextInt(60000) + 60000;
 
-                      databaseService.addUser(GlobalData.userId! ,userData);
+                      SubscriptionModel subscriptionModel = SubscriptionModel(
+                          subId: const Uuid().toString(),
+                          userId: GlobalData.userId!,
+                          name: "MonEye",
+                          description:
+                              "Application which helps in managing subscriptions",
+                          category: "category",
+                          firstPayment: "firstPayment",
+                          currency: 99);
+
+                      // List<SubscriptionModel> subsList = [subscriptionModel];
+
+                      UserData userData = UserData(
+                          userId: GlobalData.userId!,
+                          fullName: txtName.text,
+                          emailId: GlobalData.email!,
+                          phone: txtPhoneNumber.text,
+                          bank: txtBankName.text,
+                          accountNumber: txtAccountNumber.text,
+                          accountBalance: randomNumber);
+                          // subscriptionModel: subsList);
+
+                      databaseService.addUser(GlobalData.userId!, userData);
+                      databaseService.addSubscriptionToUser(subscriptionModel);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

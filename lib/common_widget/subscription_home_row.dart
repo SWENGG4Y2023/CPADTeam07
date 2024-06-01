@@ -1,9 +1,10 @@
+import 'package:assignment/models/subscription_model.dart';
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
 
 class SubScriptionHomeRow extends StatelessWidget {
-  final Map sObj;
+  final SubscriptionModel sObj;
   final VoidCallback onPressed;
 
   const SubScriptionHomeRow(
@@ -30,18 +31,18 @@ class SubScriptionHomeRow extends StatelessWidget {
           child: Row(
             children: [
               
-              
-              Image.asset(
-                sObj["icon"],
-                width: 40,
-                height: 40,
-              ),
+              // TODO
+              // Image.asset(
+              //   sObj.subId,
+              //   width: 40,
+              //   height: 40,
+              // ),
               const SizedBox(
                 width: 8,
               ),
               Expanded(
                 child: Text(
-                  sObj["name"],
+                  sObj.name,
                   style: TextStyle(
                       color: TColor.white,
                       fontSize: 14,
@@ -52,7 +53,7 @@ class SubScriptionHomeRow extends StatelessWidget {
                 width: 8,
               ),
               Text(
-                "\$${sObj["price"]}",
+                sObj.currency.toString(),
                 style: TextStyle(
                     color: TColor.white,
                     fontSize: 14,

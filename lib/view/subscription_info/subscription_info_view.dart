@@ -1,3 +1,4 @@
+import 'package:assignment/models/subscription_model.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/common_widget/secondary_boutton.dart';
@@ -6,7 +7,7 @@ import '../../common/color_extension.dart';
 import '../../common_widget/item_row.dart';
 
 class SubscriptionInfoView extends StatefulWidget {
-  final Map sObj;
+  final SubscriptionModel sObj;
   const SubscriptionInfoView({super.key, required this.sObj});
 
   @override
@@ -73,16 +74,16 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                             ],
                           ),
                           const Spacer(),
-                          Image.asset(
-                            widget.sObj["icon"],
-                            width: media.width * 0.25,
-                            height: media.width * 0.25,
-                          ),
+                          // Image.asset(
+                          //   widget.sObj["icon"],
+                          //   width: media.width * 0.25,
+                          //   height: media.width * 0.25,
+                          // ),
                           const SizedBox(
                             height: 20,
                           ),
                           Text(
-                            widget.sObj["name"],
+                            widget.sObj.name,
                             style: TextStyle(
                                 color: TColor.white,
                                 fontSize: 32,
@@ -92,7 +93,7 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                             height: 15,
                           ),
                           Text(
-                            "\$${widget.sObj["price"]}",
+                            "\$${widget.sObj.currency}",
                             style: TextStyle(
                                 color: TColor.gray30,
                                 fontSize: 20,
@@ -120,27 +121,27 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                               children: [
                                 ItemRow(
                                   title: "Name",
-                                  value: widget.sObj["name"],
+                                  value: widget.sObj.name,
                                 ),
-                                const ItemRow(
+                                ItemRow(
                                   title: "Description",
-                                  value: "Music app",
+                                  value: widget.sObj.description,
                                 ),
-                                const ItemRow(
+                                ItemRow(
                                   title: "Category",
-                                  value: "Enterteintment",
+                                  value: widget.sObj.category,
                                 ),
-                                const ItemRow(
+                                ItemRow(
                                   title: "First payment",
-                                  value: "08.07.2023",
+                                  value: widget.sObj.firstPayment,
                                 ),
                                 const ItemRow(
                                   title: "Reminder",
                                   value: "Never",
                                 ),
-                                const ItemRow(
+                                ItemRow(
                                   title: "Currency",
-                                  value: "USD (\$)",
+                                  value: widget.sObj.currency.toString(),
                                 ),
                               ],
                             ),

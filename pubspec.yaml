@@ -41,6 +41,7 @@ dependencies:
   carousel_slider: ^4.2.1
   dotted_border: ^2.1.0
   intl: ^0.18.0
+  uuid: ^4.4.0
   card_swiper:
     path: dev_lib/card_swiper
   calendar_agenda: 
