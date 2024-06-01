@@ -145,7 +145,6 @@ class _HomeViewState extends State<HomeView> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              //TODO
                                                               const SettingsView()));
                                                 },
                                                 icon: Image.asset(

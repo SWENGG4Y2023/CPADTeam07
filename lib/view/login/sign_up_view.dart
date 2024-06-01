@@ -139,17 +139,10 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 20,
                   ),
                   PrimaryButton(
-                    title: "Get started, it's free!",
+                    title: "Get started",
                     onPressed: () {
                       // validate user and password fields
                       if (txtEmail.text == "" || txtPassword.text == "") {
-                        // AlertDialog(
-                        //   backgroundColor: Colors.white,
-                        //   content: Text(
-                        //     "Please fill in all fields",
-                        //     style: TextStyle(color: Colors.white),
-                        //   ),
-                        // );
                         _showMyDialog("Please fill in all fields", context);
                         return;
                       }
