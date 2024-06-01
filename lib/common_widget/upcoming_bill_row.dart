@@ -48,7 +48,7 @@ class UpcomingBillRow extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      "25",
+                      "10",
                       style: TextStyle(
                           color: TColor.gray30,
                           fontSize: 14,

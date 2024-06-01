@@ -29,11 +29,11 @@ class SubScriptionHomeRow extends StatelessWidget {
           alignment: Alignment.center,
           child: Row(
             children: [
-              Image.asset(
-                sObj.subImage,
-                width: 40,
-                height: 40,
-              ),
+              // Image.asset(
+              //   sObj.subImage,
+              //   width: 40,
+              //   height: 40,
+              // ),
               const SizedBox(
                 width: 8,
               ),

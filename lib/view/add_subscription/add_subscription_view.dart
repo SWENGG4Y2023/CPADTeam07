@@ -33,10 +33,11 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
       "icon": "assets/img/onedrive_logo.png",
     },
     {"name": "NetFlix", "icon": "assets/img/netflix_logo.png"},
-    {"name": "Other", "icon": "assets/img/netflix_logo.png"}
+    {"name": "Other", "icon": "assets/img/app_logo.png"}
   ];
 
   double amountVal = 0.09;
+  String imageAssetPath = "assets/img/app_logo.png";
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +113,6 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
                         itemBuilder: (BuildContext context, int itemIndex,
                             int pageViewIndex) {
                           var sObj = subArr[itemIndex] as Map? ?? {};
-
                           return Container(
                             margin: const EdgeInsets.all(10),
                             child: Column(
@@ -176,7 +176,7 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
                     category: txtCategoryName.text,
                     firstPayment: DateTime.now().toString(),
                     currency: int.parse(txtSubsPrice.text),
-                    subImage: "assets/img/app_logo.png",
+                    subImage: imageAssetPath,
                   );
 
                   setState(() {
