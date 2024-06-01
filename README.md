@@ -1,6 +1,9 @@
-# Subscription Management System
+# Moneye - your one stop solution for managing Subscriptions
 
-Subscription Management System is a cross-platform mobile application developed using Flutter, allowing users to manage their active subscriptions in one place. The app supports both iOS and Android devices.
+![MoneyeLogo5](https://github.com/PrashitaK/SPMAssignment/assets/119055040/e78b11b2-e4a7-4b5a-8a62-00c954cf6d11)
+
+
+Moneye is a cross-platform mobile application developed using Flutter, allowing users to manage their active subscriptions in one place. The app supports both iOS and Android devices.
 
 ## Features
 
