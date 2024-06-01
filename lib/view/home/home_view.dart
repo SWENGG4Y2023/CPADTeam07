@@ -100,6 +100,7 @@ class _HomeViewState extends State<HomeView> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 UserData userData = snapshot.data!;
+                GlobalData.fullName = userData.fullName;
                 return FutureBuilder(
                     future: subsciptionData,
                     builder: (context, snapshot2) {
@@ -161,14 +162,11 @@ class _HomeViewState extends State<HomeView> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SizedBox(
-                                        height: media.width * 0.05,
+                                        height: media.width * 0.1,
                                       ),
                                       Image.asset("assets/img/app_logo.png",
-                                          width: media.width * 0.25,
+                                          width: media.width * 0.40,
                                           fit: BoxFit.contain),
-                                      SizedBox(
-                                        height: media.width * 0.07,
-                                      ),
                                       Text(
                                         '\u{20B9}${userData.accountBalance}',
                                         style: TextStyle(
@@ -187,39 +185,42 @@ class _HomeViewState extends State<HomeView> {
                                             fontWeight: FontWeight.w600),
                                       ),
                                       SizedBox(
-                                        height: media.width * 0.07,
+                                        height: media.width * 0.25,
                                       ),
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const SpendingBudgetsView(),
-                                            ),
-                                          );
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: TColor.border
-                                                  .withOpacity(0.15),
-                                            ),
-                                            color:
-                                                TColor.gray60.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                          ),
-                                          child: Text(
-                                            "See your budget",
-                                            style: TextStyle(
-                                                color: TColor.white,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ),
-                                      )
+                                      // InkWell(
+                                      //   onTap: () {
+                                      //     Navigator.push(
+                                      //       context,
+                                      //       MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             const SpendingBudgetsView(),
+                                      //       ),
+                                      //     );
+                                      //   },
+                                      //   child: Container(
+                                      //     padding: const EdgeInsets.all(8),
+                                      //     decoration: BoxDecoration(
+                                      //       border: Border.all(
+                                      //         color: TColor.border
+                                      //             .withOpacity(0.15),
+                                      //       ),
+                                      //       color:
+                                      //           TColor.gray60.withOpacity(0.3),
+                                      //       borderRadius:
+                                      //           BorderRadius.circular(16),
+                                      //     ),
+                                      //     child: Text(
+                                      //       "See your budget",
+                                      //       style: TextStyle(
+                                      //           color: TColor.white,
+                                      //           fontSize: 12,
+                                      //           fontWeight: FontWeight.w600),
+                                      //     ),
+                                      //   ),
+                                      // ),
+                                      // SizedBox(
+                                      //   height: media.width * 0.07,
+                                      // ),
                                     ],
                                   ),
                                   Padding(

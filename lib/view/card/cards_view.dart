@@ -1,4 +1,4 @@
-
+import 'package:assignment/utils/global_data.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -13,41 +13,30 @@ class CardsView extends StatefulWidget {
 }
 
 class _CardsViewState extends State<CardsView> {
-  List subArr = [
-    {"name": "Spotify", "icon": "assets/img/spotify_logo.png", "price": "5.99"},
-    {
-      "name": "YouTube Premium",
-      "icon": "assets/img/youtube_logo.png",
-      "price": "18.99"
-    },
-    {
-      "name": "Microsoft OneDrive",
-      "icon": "assets/img/onedrive_logo.png",
-      "price": "29.99"
-    },
-    {"name": "NetFlix", "icon": "assets/img/netflix_logo.png", "price": "15.00"}
-  ];
-
   List carArr = [
     {
       "name": "code for any1",
       "number": "**** **** **** 2197",
-      "month_year": "08/27"
+      "month_year": "08/27",
+      "dues": "15000"
     },
     {
       "name": "code for any2",
       "number": "**** **** **** 2198",
-      "month_year": "09/27"
+      "month_year": "09/27",
+      "dues": "12000"
     },
     {
       "name": "code for any3",
       "number": "**** **** **** 2297",
-      "month_year": "07/27"
+      "month_year": "07/27",
+      "dues": "45000"
     },
     {
       "name": "code for any4",
       "number": "**** **** **** 2397",
-      "month_year": "05/27"
+      "month_year": "05/27",
+      "dues": "35000"
     },
   ];
 
@@ -108,7 +97,7 @@ class _CardsViewState extends State<CardsView> {
                   height: 115,
                 ),
                 Text(
-                  cObj["name"] ?? "Code For Any",
+                  GlobalData.fullName ?? "John Doe",
                   style: TextStyle(
                       color: TColor.gray20,
                       fontSize: 12,
@@ -192,88 +181,35 @@ class _CardsViewState extends State<CardsView> {
                     ],
                   ),
                 ),
-
                 const SizedBox(
                   height: 380,
                 ),
-
-                Text(
-                  "Subscriptions",
-                  style: TextStyle(
-                      color: TColor.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: subArr.map((sObj) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Image.asset(
-                        sObj["icon"],
-                        width: 40,
-                        height: 40,
-                      ),
-                    );
-                  }).toList(),
-                ),
-
                 const SizedBox(
-                  height: 40,
+                  height: 100,
                 ),
-
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: TColor.gray70.withOpacity(0.5),
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          topRight: Radius.circular(25))),
-
-                  child: Column(children: [
-                    Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 20),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(16),
-                          onTap: () {},
-                          child: DottedBorder(
-                            dashPattern: const [5, 4],
-                            strokeWidth: 1,
-                            borderType: BorderType.RRect,
-                            radius: const Radius.circular(16),
-                            color: TColor.border.withOpacity(0.1),
-                            child: Container(
-                              height: 50,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              alignment: Alignment.center,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Add new card",
-                                    style: TextStyle(
-                                        color: TColor.gray30,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  Image.asset(
-                                    "assets/img/add.png",
-                                    width: 12,
-                                    height: 12,
-                                    color: TColor.gray30,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: TColor.gray70.withOpacity(0.5),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(25))),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      child: Text(
+                        "You have currently ${carArr.length} cards linked to your bank account. ",
+                        softWrap: true,
+                        maxLines: 3,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            color: TColor.gray30,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
                       ),
-                  ],),
+                    ),
+                  ),
                 )
               ],
             ),

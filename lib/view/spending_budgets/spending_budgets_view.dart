@@ -42,9 +42,9 @@ class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
     {
       "name": "Finance",
       "icon": "assets/img/security.png",
-      "spend_amount": "1500",
+      "spend_amount": "2000",
       "total_budget": "3000",
-      "left_amount": "1500",
+      "left_amount": "1000",
       "color": TColor.primary10
     },
   ];

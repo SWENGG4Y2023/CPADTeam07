@@ -1,3 +1,7 @@
+import 'package:assignment/common_widget/primary_button.dart';
+import 'package:assignment/utils/global_data.dart';
+import 'package:assignment/view/login/welcome_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
@@ -66,7 +70,7 @@ class _SettingsViewState extends State<SettingsView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Code For Any",
+                  GlobalData.fullName ?? "John Doe",
                   style: TextStyle(
                       color: TColor.white,
                       fontSize: 20,
@@ -81,7 +85,7 @@ class _SettingsViewState extends State<SettingsView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "codeforany@gmail.com",
+                  GlobalData.email ?? "johnDoe@gmail.com",
                   style: TextStyle(
                       color: TColor.gray30,
                       fontSize: 12,
@@ -89,32 +93,11 @@ class _SettingsViewState extends State<SettingsView> {
                 )
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(15),
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: TColor.border.withOpacity(0.15),
-                  ),
-                  color: TColor.gray60.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Text(
-                  "Edit profile",
-                  style: TextStyle(
-                      color: TColor.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
+            // const SizedBox(
+            //   height: 8,
+            // ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -157,7 +140,6 @@ class _SettingsViewState extends State<SettingsView> {
                       ],
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 8),
                     child: Text(
@@ -184,23 +166,19 @@ class _SettingsViewState extends State<SettingsView> {
                           icon: "assets/img/sorting.png",
                           value: "Date",
                         ),
-
                         IconItemRow(
                           title: "Summary",
                           icon: "assets/img/chart.png",
                           value: "Average",
                         ),
-
                         IconItemRow(
                           title: "Default currency",
                           icon: "assets/img/money.png",
-                          value: "USD (\$)",
+                          value: "Indian Rupee (\u{20B9})",
                         ),
-                        
                       ],
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 8),
                     child: Text(
@@ -237,9 +215,31 @@ class _SettingsViewState extends State<SettingsView> {
                           icon: "assets/img/font.png",
                           value: "Inter",
                         ),
-                        
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  PrimaryButton(
+                    title: "Sign Out",
+                    onPressed: () async {
+                      FirebaseAuth.instance.signOut().then((value) {
+                        const SnackBar(
+                          content: Text("User signed out successfully"),
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WelcomeView(),
+                          ),
+                        );
+                      }).onError((error, stackTrace) {
+                        SnackBar(
+                          content: Text("$error Please try again."),
+                        );
+                      }) as UserCredential;
+                    },
                   ),
                 ],
               ),

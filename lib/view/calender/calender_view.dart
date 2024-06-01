@@ -111,10 +111,10 @@ class _CalenderViewState extends State<CalenderView> {
                             height: 20,
                           ),
                           Text(
-                            "Subs\nSchedule",
+                            "Subscription\nSchedule",
                             style: TextStyle(
                                 color: TColor.white,
-                                fontSize: 35,
+                                fontSize: 30,
                                 fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(
