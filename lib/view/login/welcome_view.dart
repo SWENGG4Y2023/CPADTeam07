@@ -1,3 +1,4 @@
+import 'package:assignment/view/login/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:assignment/view/login/sign_in_view.dart';
@@ -59,7 +60,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SocialLoginView(),
+                          builder: (context) => const SignUpView(),
                         ),
                       );
                     },

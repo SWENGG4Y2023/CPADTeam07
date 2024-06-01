@@ -64,7 +64,8 @@ class DatabaseService {
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await db.collection("Subscriptions").get();
     return snapshot.docs
-        .map((docSnapshot) => SubscriptionModel.fromDocumentSnapshot(docSnapshot))
+        .map((docSnapshot) =>
+            SubscriptionModel.fromDocumentSnapshot(docSnapshot))
         .toList();
   }
 

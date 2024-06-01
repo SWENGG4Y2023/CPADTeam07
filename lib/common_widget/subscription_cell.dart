@@ -26,7 +26,6 @@ class SubScriptionCell extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-        
           children: [
             Image.asset(
               sObj["icon"],
@@ -45,7 +44,7 @@ class SubScriptionCell extends StatelessWidget {
               width: 8,
             ),
             Text(
-              "\$${sObj["price"]}",
+              "\u{20B9}${sObj["price"]}",
               style: TextStyle(
                   color: TColor.white,
                   fontSize: 20,

@@ -62,23 +62,14 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                                 style: TextStyle(
                                     color: TColor.gray30, fontSize: 16),
                               ),
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Image.asset("assets/img/Trash.png",
-                                    width: 25,
-                                    height: 25,
-                                    color: TColor.gray30),
-                              ),
                             ],
                           ),
                           const Spacer(),
-                          // Image.asset(
-                          //   widget.sObj["icon"],
-                          //   width: media.width * 0.25,
-                          //   height: media.width * 0.25,
-                          // ),
+                          Image.asset(
+                            widget.sObj.subImage,
+                            width: media.width * 0.25,
+                            height: media.width * 0.25,
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -93,7 +84,7 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                             height: 15,
                           ),
                           Text(
-                            "\$${widget.sObj.currency}",
+                            '\u{20B9}${widget.sObj.currency}',
                             style: TextStyle(
                                 color: TColor.gray30,
                                 fontSize: 20,
@@ -141,7 +132,7 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                                 ),
                                 ItemRow(
                                   title: "Currency",
-                                  value: widget.sObj.currency.toString(),
+                                  value: '\u{20B9}${widget.sObj.currency}',
                                 ),
                               ],
                             ),
@@ -149,7 +140,6 @@ class _SubscriptionInfoViewState extends State<SubscriptionInfoView> {
                           const SizedBox(
                             height: 20,
                           ),
-                          SecondaryButton(title: "Save", onPressed: () {})
                         ],
                       ),
                     )

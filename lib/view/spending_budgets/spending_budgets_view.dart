@@ -16,7 +16,7 @@ class SpendingBudgetsView extends StatefulWidget {
 class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
   List budgetArr = [
     {
-      "name": "Auto & Transport",
+      "name": "Transport",
       "icon": "assets/img/auto_&_transport.png",
       "spend_amount": "25.99",
       "total_budget": "400",
@@ -32,11 +32,19 @@ class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
       "color": TColor.secondary50
     },
     {
-      "name": "Security",
+      "name": "Food",
       "icon": "assets/img/security.png",
       "spend_amount": "5.99",
       "total_budget": "600",
       "left_amount": "250.01",
+      "color": TColor.primary10
+    },
+    {
+      "name": "Finance",
+      "icon": "assets/img/security.png",
+      "spend_amount": "1500",
+      "total_budget": "3000",
+      "left_amount": "1500",
       "color": TColor.primary10
     },
   ];
@@ -88,14 +96,14 @@ class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
                 Column(
                   children: [
                     Text(
-                      "\$82,90",
+                      "\u{20B9}" + "8290",
                       style: TextStyle(
                           color: TColor.white,
                           fontSize: 24,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      "of \$2,0000 budget",
+                      "of total budget",
                       style: TextStyle(
                           color: TColor.gray30,
                           fontSize: 12,
@@ -127,7 +135,7 @@ class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Your budgets are on tack 👍",
+                        "Your budgets are on track 👍",
                         style: TextStyle(
                             color: TColor.white,
                             fontSize: 14,
@@ -152,46 +160,6 @@ class _SpendingBudgetsViewState extends State<SpendingBudgetsView> {
                     onPressed: () {},
                   );
                 }),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(16),
-                onTap: () {},
-                child: DottedBorder(
-                  dashPattern: const [5, 4],
-                  strokeWidth: 1,
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(16),
-                  color: TColor.border.withOpacity(0.1),
-                  child: Container(
-                    height: 64,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Add new category ",
-                          style: TextStyle(
-                              color: TColor.gray30,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Image.asset(
-                          "assets/img/add.png",
-                          width: 12,
-                          height: 12,
-                          color: TColor.gray30,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(
               height: 110,
             ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SubscriptionModel {
+  String subImage;
   String subId;
   String userId;
   String name;
@@ -11,6 +12,7 @@ class SubscriptionModel {
 
   SubscriptionModel(
       {required this.subId,
+      required this.subImage,
       required this.userId,
       required this.name,
       required this.description,
@@ -21,6 +23,7 @@ class SubscriptionModel {
   Map<String, dynamic> toMap() {
     return {
       "subId": subId,
+      "subImage": subImage,
       "userId": userId,
       "name": name,
       "description": description,
@@ -33,6 +36,7 @@ class SubscriptionModel {
   static SubscriptionModel fromJson(Map<String, dynamic> json) {
     return SubscriptionModel(
       subId: json["subId"] ?? "",
+      subImage: json["subImage"] ?? "",
       userId: json["userId"] ?? "",
       name: json["name"] ?? "",
       description: json["description"] ?? "",
@@ -45,6 +49,7 @@ class SubscriptionModel {
   SubscriptionModel.fromDocumentSnapshot(
       DocumentSnapshot<Map<String, dynamic>> doc)
       : subId = doc.data()!["subId"],
+        subImage = doc.data()!["subImage"],
         userId = doc.data()!["userId"],
         name = doc.data()!["name"],
         description = doc.data()!["description"],

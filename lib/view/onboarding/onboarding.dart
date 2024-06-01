@@ -150,10 +150,6 @@ class OnboardingViewState extends State<OnboardingView> {
                       // Setup global data
                       GlobalData.fullName = txtName.text;
 
-                      // //for now please TODO
-                      // GlobalData.email = "prashita@gmail.com";
-                      // GlobalData.userId = "6ahxNtjikFQ8GTOowPaOBcPfRMk1";
-
                       Random random = Random();
                       int randomNumber = random.nextInt(60000) + 60000;
 
@@ -161,11 +157,11 @@ class OnboardingViewState extends State<OnboardingView> {
                           subId: const Uuid().toString(),
                           userId: GlobalData.userId!,
                           name: "MonEye",
-                          description:
-                              "Application which helps in managing subscriptions",
-                          category: "category",
-                          firstPayment: "firstPayment",
-                          currency: 99);
+                          description: "Manage subscriptions",
+                          category: "Finance",
+                          firstPayment: DateTime.now().toString(),
+                          currency: 99,
+                          subImage: "assets/img/app_logo.png");
 
                       // List<SubscriptionModel> subsList = [subscriptionModel];
 
@@ -177,7 +173,7 @@ class OnboardingViewState extends State<OnboardingView> {
                           bank: txtBankName.text,
                           accountNumber: txtAccountNumber.text,
                           accountBalance: randomNumber);
-                          // subscriptionModel: subsList);
+                      // subscriptionModel: subsList);
 
                       databaseService.addUser(GlobalData.userId!, userData);
                       databaseService.addSubscriptionToUser(subscriptionModel);

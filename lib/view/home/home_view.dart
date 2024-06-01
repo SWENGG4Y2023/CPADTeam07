@@ -39,20 +39,20 @@ class _HomeViewState extends State<HomeView> {
   //   {"name": "NetFlix", "icon": "assets/img/netflix_logo.png", "price": "15.00"}
   // ];
 
-  // List bilArr = [
-  //   {"name": "Spotify", "date": DateTime(2023, 07, 25), "price": "5.99"},
-  //   {
-  //     "name": "YouTube Premium",
-  //     "date": DateTime(2023, 07, 25),
-  //     "price": "18.99"
-  //   },
-  //   {
-  //     "name": "Microsoft OneDrive",
-  //     "date": DateTime(2023, 07, 25),
-  //     "price": "29.99"
-  //   },
-  //   {"name": "NetFlix", "date": DateTime(2023, 07, 25), "price": "15.00"}
-  // ];
+  List bilArr = [
+    {"name": "Spotify", "date": DateTime(2023, 07, 25), "price": "5.99"},
+    // {
+    //   "name": "YouTube Premium",
+    //   "date": DateTime(2023, 07, 25),
+    //   "price": "18.99"
+    // },
+    // {
+    //   "name": "Microsoft OneDrive",
+    //   "date": DateTime(2023, 07, 25),
+    //   "price": "29.99"
+    // },
+    // {"name": "NetFlix", "date": DateTime(2023, 07, 25), "price": "15.00"}
+  ];
 
   DatabaseService databaseService = DatabaseService();
   late Future<UserData> userDataModel;
@@ -61,9 +61,31 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    userDataModel = databaseService.getUser(GlobalData.userId!);
-    subsciptionData = databaseService.getSubscription(GlobalData.userId!);
+    setState(() {
+      userDataModel = databaseService.getUser(GlobalData.userId!);
+      subsciptionData = databaseService.getSubscription(GlobalData.userId!);
+    });
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+  }
+
+  String getHighestSubscription(List<SubscriptionModel> subArr) {
+    int highest = subArr[0].currency;
+    for (var sub in subArr) {
+      if (highest < sub.currency) {
+        highest = sub.currency;
+      }
+    }
+    return '\u{20B9}$highest';
+  }
+
+  String getLowestSubscription(List<SubscriptionModel> subArr) {
+    int lowest = subArr[0].currency;
+    for (var sub in subArr) {
+      if (lowest > sub.currency) {
+        lowest = sub.currency;
+      }
+    }
+    return '\u{20B9}$lowest';
   }
 
   @override
@@ -141,20 +163,14 @@ class _HomeViewState extends State<HomeView> {
                                       SizedBox(
                                         height: media.width * 0.05,
                                       ),
-                                      // Image.asset("assets/img/app_logo.png",
-                                      //     width: media.width * 0.25, fit: BoxFit.contain),
-                                      Text(
-                                        "MONEYE",
-                                        style: TextStyle(
-                                            color: TColor.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                      Image.asset("assets/img/app_logo.png",
+                                          width: media.width * 0.25,
+                                          fit: BoxFit.contain),
                                       SizedBox(
                                         height: media.width * 0.07,
                                       ),
                                       Text(
-                                        userData.accountBalance.toString(),
+                                        '\u{20B9}${userData.accountBalance}',
                                         style: TextStyle(
                                             color: TColor.white,
                                             fontSize: 35,
@@ -195,7 +211,6 @@ class _HomeViewState extends State<HomeView> {
                                             borderRadius:
                                                 BorderRadius.circular(16),
                                           ),
-                                          // TODO
                                           child: Text(
                                             "See your budget",
                                             style: TextStyle(
@@ -217,7 +232,7 @@ class _HomeViewState extends State<HomeView> {
                                             Expanded(
                                               child: StatusButton(
                                                 title: "Active subs",
-                                                value: "12",
+                                                value: subArr.length.toString(),
                                                 statusColor: TColor.secondary,
                                                 onPressed: () {},
                                               ),
@@ -228,7 +243,8 @@ class _HomeViewState extends State<HomeView> {
                                             Expanded(
                                               child: StatusButton(
                                                 title: "Highest subs",
-                                                value: "\$19.99",
+                                                value: getHighestSubscription(
+                                                    subArr),
                                                 statusColor: TColor.primary10,
                                                 onPressed: () {},
                                               ),
@@ -239,7 +255,8 @@ class _HomeViewState extends State<HomeView> {
                                             Expanded(
                                               child: StatusButton(
                                                 title: "Lowest subs",
-                                                value: "\$5.99",
+                                                value: getLowestSubscription(
+                                                    subArr),
                                                 statusColor: TColor.secondaryG,
                                                 onPressed: () {},
                                               ),
@@ -327,9 +344,15 @@ class _HomeViewState extends State<HomeView> {
                                       horizontal: 20, vertical: 0),
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
-                                  itemCount: subArr.length,
+                                  itemCount: bilArr.length,
                                   itemBuilder: (context, index) {
-                                    var sObj = subArr[index] as Map? ?? {};
+                                    var sObj = bilArr[index];
+
+                                    if (bilArr.length == 0 || bilArr.isEmpty) {
+                                      return const Center(
+                                        child: Text("No upcoming bills!"),
+                                      );
+                                    }
 
                                     return UpcomingBillRow(
                                       sObj: sObj,

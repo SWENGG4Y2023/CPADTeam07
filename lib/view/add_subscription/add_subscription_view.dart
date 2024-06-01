@@ -1,10 +1,13 @@
+import 'package:assignment/models/subscription_model.dart';
+import 'package:assignment/service/database_service.dart';
+import 'package:assignment/utils/global_data.dart';
+import 'package:assignment/view/main_tab/main_tab_view.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/common/color_extension.dart';
 import 'package:assignment/common_widget/primary_button.dart';
 import 'package:assignment/common_widget/round_textfield.dart';
-
-import '../../common_widget/image_button.dart';
+import 'package:uuid/uuid.dart';
 
 class AddSubScriptionView extends StatefulWidget {
   const AddSubScriptionView({super.key});
@@ -14,7 +17,12 @@ class AddSubScriptionView extends StatefulWidget {
 }
 
 class _AddSubScriptionViewState extends State<AddSubScriptionView> {
+  DatabaseService databaseService = DatabaseService();
+
   TextEditingController txtDescription = TextEditingController();
+  TextEditingController txtCategoryName = TextEditingController();
+  TextEditingController txtSubsName = TextEditingController();
+  TextEditingController txtSubsPrice = TextEditingController();
 
   List subArr = [
     {"name": "HBO GO", "icon": "assets/img/hbo_logo.png"},
@@ -24,7 +32,8 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
       "name": "Microsoft OneDrive",
       "icon": "assets/img/onedrive_logo.png",
     },
-    {"name": "NetFlix", "icon": "assets/img/netflix_logo.png"}
+    {"name": "NetFlix", "icon": "assets/img/netflix_logo.png"},
+    {"name": "Other", "icon": "assets/img/netflix_logo.png"}
   ];
 
   double amountVal = 0.09;
@@ -88,7 +97,7 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
                     ),
                     SizedBox(
                       width: media.width,
-                      height: media.width * 0.6,
+                      height: media.width * 0.5,
                       child: CarouselSlider.builder(
                         options: CarouselOptions(
                           autoPlay: false,
@@ -115,14 +124,6 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
                                   height: media.width * 0.4,
                                   fit: BoxFit.fitHeight,
                                 ),
-                                const Spacer(),
-                                Text(
-                                  sObj["name"],
-                                  style: TextStyle(
-                                      color: TColor.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                )
                               ],
                             ),
                           );
@@ -133,82 +134,60 @@ class _AddSubScriptionViewState extends State<AddSubScriptionView> {
                 ),
               ),
             ),
-
             Padding(
-              padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-              child: RoundTextField(title: "Description", titleAlign: TextAlign.center, controller: txtDescription, )
-
-            ),
-
+                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                child: RoundTextField(
+                  title: "Name",
+                  titleAlign: TextAlign.center,
+                  controller: txtSubsName,
+                )),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ImageButton(
-                    image: "assets/img/minus.png",
-                    onPressed: () {
+                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                child: RoundTextField(
+                  title: "Description",
+                  titleAlign: TextAlign.center,
+                  controller: txtDescription,
+                )),
+            Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: RoundTextField(
+                  title: "Category",
+                  titleAlign: TextAlign.center,
+                  controller: txtCategoryName,
+                )),
+            Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: RoundTextField(
+                  title: "Monthly price",
+                  titleAlign: TextAlign.center,
+                  controller: txtSubsPrice,
+                )),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: PrimaryButton(
+                title: "Add this platform",
+                onPressed: () {
+                  // add subscription to a user here.
+                  SubscriptionModel subscriptionModel = SubscriptionModel(
+                    subId: const Uuid().toString(),
+                    userId: GlobalData.userId!,
+                    name: txtSubsName.text,
+                    description: txtDescription.text,
+                    category: txtCategoryName.text,
+                    firstPayment: DateTime.now().toString(),
+                    currency: int.parse(txtSubsPrice.text),
+                    subImage: "assets/img/app_logo.png",
+                  );
 
-                      amountVal -= 0.1;
-
-                      if(amountVal < 0) {
-                        amountVal = 0;
-                      }
-
-                      setState(() {
-                        
-                      });
-                    },
-                  ),
-
-                  Column(
-                    children: [
-                        Text(
-                        "Monthly price",
-                        style: TextStyle(
-                            color: TColor.gray40,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600),
-                      ),
-
-                     const SizedBox(height: 4,),
-
-                       Text(
-                        "\$${amountVal.toStringAsFixed(2)}",
-                        style: TextStyle(
-                            color: TColor.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-
-                      Container(
-                        width: 150,
-                        height: 1,
-                        color: TColor.gray70,
-                      )
-                    ],
-                  ),
-
-                  ImageButton(
-                    image: "assets/img/plus.png",
-                    onPressed: () {
-                      amountVal += 0.1;
-
-                      setState(() {});
-                    },
-                  )
-                ],
+                  setState(() {
+                    databaseService.addSubscriptionToUser(subscriptionModel);
+                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainTabView()));
+                },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child:
-                  PrimaryButton(title: "Add this platform", onPressed: () {
-                    // TODO - add subscription to a user here.
-                  }),
             ),
             const SizedBox(
               height: 20,

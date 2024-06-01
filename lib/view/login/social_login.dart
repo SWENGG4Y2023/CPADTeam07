@@ -26,7 +26,7 @@ class _SocialLoginViewState extends State<SocialLoginView> {
               Image.asset("assets/img/app_logo.png",
                   width: media.width * 0.5, fit: BoxFit.contain),
               const Spacer(),
-              
+
               // Apple SignUp
               InkWell(
                 onTap: () {},

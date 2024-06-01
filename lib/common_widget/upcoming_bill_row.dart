@@ -1,3 +1,4 @@
+import 'package:assignment/models/subscription_model.dart';
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
@@ -33,7 +34,7 @@ class UpcomingBillRow extends StatelessWidget {
                 width: 40,
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: TColor.gray70.withOpacity(0.5),
+                  color: TColor.gray70,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: Alignment.center,
@@ -46,7 +47,6 @@ class UpcomingBillRow extends StatelessWidget {
                           fontSize: 10,
                           fontWeight: FontWeight.w500),
                     ),
-
                     Text(
                       "25",
                       style: TextStyle(
@@ -73,7 +73,7 @@ class UpcomingBillRow extends StatelessWidget {
                 width: 8,
               ),
               Text(
-                "\$${sObj["price"]}",
+                "\u{20B9}" + sObj["price"],
                 style: TextStyle(
                     color: TColor.white,
                     fontSize: 14,
