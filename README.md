@@ -20,22 +20,22 @@ Moneye is a cross-platform mobile application developed using Flutter, allowing 
 3. **Dashboard**
    - A comprehensive dashboard that displays all active subscriptions with a summary of the total monthly cost.
    - Visual representation of spending patterns and subscription distribution.
-   - Quick access to add, edit, or delete subscriptions. (WIP)⚠️
+   - Quick access to add, edit, or delete subscriptions. (WIP)
 
 4. **Monthly Spend Limit**
    - Users can set a monthly budget for their subscriptions.
    - Real-time tracking of spending against the set limit.
-   - Alerts and notifications when nearing or exceeding the budget. (WIP)⚠️
+   - Alerts and notifications when nearing or exceeding the budget. (WIP)
 
 5. **Upcoming Renewals**
    - A dedicated section to view subscriptions that need to be renewed soon.
    - Notifications for upcoming renewals to ensure users don’t miss any payments.
-   - Filter and sort renewals by date or priority. (WIP)⚠️
+   - Filter and sort renewals by date or priority. (WIP)
 
 6. **Budget Monitoring**
    - Detailed categorization of subscriptions (e.g., transport, food, home, entertainment).
    - Monthly reports on spending per category.
-   - Insights and recommendations for optimizing subscription expenses. (WIP)⚠️
+   - Insights and recommendations for optimizing subscription expenses. (WIP)
 
 7. **Renewal Breakdown**
    - A calendar view showing the day-wise breakdown of upcoming renewals.
@@ -44,7 +44,7 @@ Moneye is a cross-platform mobile application developed using Flutter, allowing 
 
 8. **Card Management**
    - Securely store and manage multiple payment cards within the app. 
-   - Notifications for card expiry and option to update card details. (WIP)⚠
+   - Notifications for card expiry and option to update card details. (WIP)
 
 9. **Profile Management**
    - Users can log in and manage their profile information.
