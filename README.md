@@ -86,8 +86,8 @@ flutter run
 ```
 
 ## Team Members
-- Prashita Khunteta
-- Keerthi G
-- Sebin Sunny
-- Srikesh Nair
-- Vatsla Khurana
+- Prashita Khunteta - 2021HS70040
+- Keerthi G - 2021HS70036
+- Sebin Sunny - 2021HS7009
+- Srikesh Nair - 2021HS70007
+- Vatsla Khurana - 2021HS70032
